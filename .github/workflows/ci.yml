@@ -1,0 +1,17 @@
+name: Ping Google
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Google
+        run: ping -c 4 google.com
+
