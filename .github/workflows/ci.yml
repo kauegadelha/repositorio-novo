@@ -1,3 +1,4 @@
+
 name: Ping Google
 
 on:
@@ -8,10 +9,29 @@ on:
       - dev
 
 jobs:
-  ping:
+  ping-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Ping Google
         run: ping -c 4 google.com
 
+      - name: Forçar erro
+        run: exit 1
+
+  ping-teste2:
+    runs-on: ubuntu-latest
+    needs: ping-test
+    if: always()
+
+    steps:
+      - name: Teste 2
+        run: echo "Executando teste 2"
+
+  ping-teste3:
+    runs-on: ubuntu-latest
+    needs: ping-test
+
+    steps:
+      - name: Teste 3
+        run: echo "Executando teste 3"
